@@ -2,6 +2,8 @@ version: '3'
 services:
   api-todo:
     build: backend/
+    networks:
+      - waf_network
     ports:
       - 3003:3003
     environment:
@@ -15,12 +17,20 @@ services:
   
   mongodb:
     image: docker.io/library/mongo:3.6
+    networks:
+      - waf_network
     ports:
       - 27017:27017
   
   frontend-todo:
     build: frontend/
+    networks:
+      - waf_network
     ports:
       - 8080:8080
     depends_on:
       - api-todo
+
+networks:
+  waf_network:
+    external: true
