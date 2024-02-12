@@ -14,7 +14,7 @@ services:
       - mongodb
   
   mongodb:
-    image: mongo:3.6
+    image: docker.io/library/mongo:3.6
     ports:
       - 27017:27017
   
